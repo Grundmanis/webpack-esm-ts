@@ -1,19 +1,17 @@
-import { subtract } from "./app";
+import * as express from 'express';
+import { Request, Response } from 'express';
 
-function init() {
-	const form = document.querySelector("form");
-	form?.addEventListener("submit", submitHandler);
-}
+const app = express();
+const {
+	PORT = 3000,
+} = process.env;
 
-function submitHandler(e: Event) {
-	e.preventDefault();
-	const num1 = document.querySelector("input[name='firstnumber']") as HTMLInputElement;
-	const num2 = document.querySelector("input[name='secondnumber']") as HTMLInputElement;
-	const result = subtract(Number(num1.value), Number(num2.value));
-	const resultElement = document.querySelector("p");
-	if (resultElement) {
-		resultElement.textContent = result.toString();
-	}
-}
 
-init();
+app.get('/', (req: Request, res: Response) => {
+	res.send({
+		message: 'hello world',
+	});
+});
+app.listen(PORT, async () => {
+	console.log('server started at http://localhost:'+PORT);
+});
