@@ -1,7 +1,9 @@
-const path = require("path");
+import path from "path";
 
-module.exports = {
+export default {
 	entry: './src/index.ts',
+	mode: "development",
+	// target: "node",
 	module: {
 		rules: [
 			{
@@ -14,15 +16,14 @@ module.exports = {
 	resolve: {
 		extensions: ['.tsx', '.ts', '.js'],
 	},
-	output: {
-		filename: 'bundle.js',
-		path: path.resolve(__dirname, 'dist'),
+	experiments: {
+		outputModule: true,
 	},
-	plugins: [
-	],
-	devServer: {
-		static: path.join(__dirname, "dist"),
-		compress: true,
-		port: 4000,
+	output: {
+		filename: 'main.js',
+		path: path.resolve('dist'),
+		library: {
+			type: "module",
+		},
 	},
 };

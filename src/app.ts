@@ -1,3 +1,3 @@
-export function subtract(firstnumber: number, secondnumber: number): number {
-	return firstnumber - secondnumber;
+export const add = (x: number, y: number) => {
+	return x + y;
 }
